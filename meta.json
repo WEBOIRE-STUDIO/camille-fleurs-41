@@ -3,9 +3,9 @@
   "heroVariant": "botanical-atelier",
   "serviceLayout": "typography-grid",
   "ctaStyle": "outline",
-  "paletteSeed": 1,
-  "heroSeed": 1,
-  "copySeed": 1,
+  "paletteSeed": 2,
+  "heroSeed": 2,
+  "copySeed": 2,
   "artDirection": {
     "key": "botanical-atelier-organic",
     "label": "Modern botanical atelier — organic luxury",
