@@ -483,14 +483,19 @@ body.artdir-artisan-bakery-editorial .service-row-editorial h3 { font-weight: 50
 .hero-botanical-atelier {
   position: relative; padding: 170px 24px 130px; overflow: hidden; background: var(--bg-light);
 }
-.hero-botanical-shapes { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.hero-botanical-shapes { position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
 .botanical-shape { position: absolute; fill: var(--primary); }
 .botanical-shape path { fill: inherit; }
-.botanical-shape.shape-a { width: 34vw; max-width: 460px; top: -8%; right: -6%; opacity: .16; filter: blur(1px); animation: botanical-drift-a 26s ease-in-out infinite; }
-.botanical-shape.shape-b { width: 22vw; max-width: 320px; bottom: -6%; left: -4%; fill: var(--accent); opacity: .18; filter: blur(2px); animation: botanical-drift-b 32s ease-in-out infinite; }
-.botanical-shape.shape-c { width: 16vw; max-width: 220px; top: 18%; left: 8%; opacity: .1; filter: blur(2px); }
-@keyframes botanical-drift-a { 0%, 100% { transform: translate(0,0) rotate(0deg); } 50% { transform: translate(-1.5%, 2%) rotate(4deg); } }
-@keyframes botanical-drift-b { 0%, 100% { transform: translate(0,0) rotate(0deg); } 50% { transform: translate(2%, -1.5%) rotate(-3deg); } }
+/* Static, not animated — a blurred shape animated concurrently with the
+   hero's own scroll-scrubbed opacity dissolve (see script.js's generic
+   "hero exit" tween) produced real compositing jank and, in this app's
+   automated QA, intermittently blank scroll-position captures. The layered
+   silhouettes still read as organic/soft-depth on their own; the page's
+   existing scroll-reveal system supplies the motion instead of a second,
+   independent animation loop competing for the same GPU layer. */
+.botanical-shape.shape-a { width: 34vw; max-width: 460px; top: -8%; right: -6%; opacity: .14; }
+.botanical-shape.shape-b { width: 22vw; max-width: 320px; bottom: -6%; left: -4%; fill: var(--accent); opacity: .16; }
+.botanical-shape.shape-c { width: 16vw; max-width: 220px; top: 18%; left: 8%; opacity: .09; }
 .hero-botanical-inner { position: relative; z-index: 1; max-width: 780px; }
 .hero-botanical-heading {
   font-size: clamp(2.8rem, 7.2vw, 5.6rem); font-weight: 600; letter-spacing: -0.01em; line-height: 1.05;
@@ -501,10 +506,6 @@ body.artdir-artisan-bakery-editorial .service-row-editorial h3 { font-weight: 50
   .hero-botanical-atelier { padding: 130px 20px 90px; }
   .botanical-shape.shape-a, .botanical-shape.shape-b { width: 55vw; }
 }
-@media (prefers-reduced-motion: reduce) {
-  .botanical-shape.shape-a, .botanical-shape.shape-b { animation: none; }
-}
-
 /* Florist typography-grid services — bespoke organic treatment: a small
    leaf-glyph bullet instead of the default card/typo styling elsewhere. */
 body.artdir-botanical-atelier-organic .service-typo-grid { gap: 14px 32px; }
